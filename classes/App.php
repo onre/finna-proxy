@@ -9,7 +9,6 @@ class App
     $api = new Api;
 
     if ($_GET['operation'] == 'searchRetrieve') {
-      Log::write($_GET);
       echo $api->searchRetrieveRequest($_GET);
     }
   }
