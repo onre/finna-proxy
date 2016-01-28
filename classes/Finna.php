@@ -14,6 +14,7 @@ class Finna
 
   public function query($action, $params)
   {
+    Log::write($this->apiBaseUrl.$action.'?'.http_build_query($params));
     return json_decode(file_get_contents($this->apiBaseUrl.$action.'?'.http_build_query($params)), 1);
   }
 }

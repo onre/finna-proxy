@@ -4,14 +4,13 @@ class App
 {
   public function run()
   {
-    try {
-      $server = new SoapServer(NULL, array('uri' => 'http://finna-proxy.anteek.fi/'));
-      
-      $server->setClass('Api');
-      $server->handle();
+    header('Content-Type: text/xml');
 
-    } catch (SOAPFault $f) {
-      Log::write($f->faultstring);
+    $api = new Api;
+
+    if ($_GET['operation'] == 'searchRetrieve') {
+      Log::write($_GET);
+      echo $api->searchRetrieveRequest($_GET);
     }
   }
 }
