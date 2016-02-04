@@ -8,6 +8,7 @@ class Finna
   {
     $options['lookfor'] = $query;
     $options['field'] = ['fullRecord'];
+    $options['filter'] = ['format:"0/Book/"'];
 
     return $this->query('search', $options);
   }

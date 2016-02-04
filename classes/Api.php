@@ -38,10 +38,17 @@ class Api
 
         if (!$domRecord) {
           Log::write('corrupted XML');
+          Log::write(print_r($record,1));
           break;
         }
 
         $recordList = $domRecord->getElementsByTagName('record');
+
+        if (!$recordList->length) {
+          Log::write('unexpected result, no records found');
+          Log::write(print_r($record,1));
+          break;
+        }
 
         $importedRecord = $dom->importNode($recordList->item(0), true); 
 
