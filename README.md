@@ -36,6 +36,13 @@ Ubuntu Koha packages. To circumvent this problem, this is what I did:
 2. get package source for *libnet-z3950-zoom-perl*
 3. rebuild and install it
 
+Installation
+------------
+
+Clone it onto a directory, set up an Apache virtual host for it,
+AllowOverride all. Create directory "logs" with Apache write
+access. That should be it.
+
 Bugs
 ----
 
