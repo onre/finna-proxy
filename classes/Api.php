@@ -11,19 +11,19 @@ class Api
     else
       $limit = $params['maximumRecords'];
 
-    Log::write($params['maximumRecords']);
-
     if(!empty($params['x-pquery']))
       $params['query'] = $params['x-pquery'];
 
-    $finnaResults = $finna->search($params['query'], array('limit' => $limit));
+    $apiParams = array('limit' => $limit);
+    if (!empty($params['startRecord']))
+      $apiParams['page'] = $params['startRecord'];
+
+    $finnaResults = $finna->search($params['query'], $apiParams);
 
     $dom = new DOMDocument('1.0', 'UTF-8');
 
     $xmlRoot = $dom->createElementNS('http://docs.oasis-open.org/ns/search-ws/sruResponse', 'zs:searchRetrieveResponse');
     $xmlRoot = $dom->appendchild($xmlRoot);
-
-    Log::write($finnaResults['resultCount']);
 
     $numberOfRecords = $dom->createElement('zs:numberOfRecords', $finnaResults['resultCount']);
     $xmlRoot->appendChild($numberOfRecords);
