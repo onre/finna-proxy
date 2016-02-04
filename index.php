@@ -5,7 +5,4 @@ spl_autoload_register(function($class) {
   });
 
 $app = new App;
-
-Log::write(print_r($_REQUEST,1));
-
 $app->run();
