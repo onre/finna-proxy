@@ -10,8 +10,8 @@ and representing it by SRU protocol to enable cataloguing with Koha.
 
 The app relies on fullRecord field of the API containing the original
 catalogued record. As of now, there is no check whatsoever regarding
-the data type returned. However, most returned records are either
-MARC21 or FINMARC, so it works most of the time.
+the data type returned. However, most returned records are MARC21, so
+it works most of the time.
 
 Requirements
 ------------
@@ -47,12 +47,10 @@ Bugs
 ----
 
 Numerous. There is basically no error handling, the SRU specification
-is not fully implemented etc. Also, finna.fi API seems to always
-return XML with MARC21 namespace, even though the actual data format
-may be FINMARC. Besides, the API might return Qualified Dublin Core as
-well, but I haven't found a query that would return such a result so
-that I could write code that'd just drop it from results, as Koha
-doesn't support it anyway.
+is not fully implemented etc. Also, the API might return Qualified
+Dublin Core as well, but I haven't found a query that would return
+such a result so that I could write code that'd just drop it from
+results, as Koha doesn't support it anyway.
 
 License
 -------
